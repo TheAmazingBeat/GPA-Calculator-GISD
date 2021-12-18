@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>GPA Calculator</title>
 	<link rel="stylesheet" href="styles.css" />
-	<script src="script.js" defer></script>
+	<script src="script.js" type="module" defer></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
 		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
@@ -65,16 +65,19 @@
 							<option value="AP">AP</option>
 						</select>
 					</td>
+					<!-- First Semester -->
 					<td class="semester-grade">
 						<input type="number" min="0" max="100" maxlength="3" minlength="1" name="sem-grade-input"
-							class="sem-grade-input" placeholder="100" required />
+							class="sem-grade-input" data-which-semester="first" placeholder="100" required />
 					</td>
-					<td class="points first-sem-points" data-first-sem-points="0.000">0.000</td>
+					<td class="points first-sem-points" data-sem-points="first">0.000</td>
+					<!-- Second Semester -->
 					<td class="semester-grade">
 						<input type="number" min="0" max="100" maxlength="3" minlength="1" name="sem-grade-input"
-							class="sem-grade-input" placeholder="100" required />
+							class="sem-grade-input" data-which-semester="second" placeholder="100" required />
 					</td>
-					<td class="points second-sem-points" data-second-sem-points="0.000">0.000</td>
+					<td class="points second-sem-points" data-sem-points="second">0.000</td>
+					<!-- Total -->
 					<td class="total" data-total-points="0.000">0.000</td>
 				</tr>
 				<!-- Class #2 -->
@@ -89,16 +92,19 @@
 							<option value="AP">AP</option>
 						</select>
 					</td>
+					<!-- First Semester -->
 					<td class="semester-grade">
 						<input type="number" min="0" max="100" maxlength="3" minlength="1" name="sem-grade-input"
-							class="sem-grade-input" placeholder="100" required />
+							class="sem-grade-input" data-which-semester="first" placeholder="100" required />
 					</td>
-					<td class="points first-sem-points" data-first-sem-points="0.000">0.000</td>
+					<td class="points first-sem-points" data-sem-points="first">0.000</td>
+					<!-- Second Semester -->
 					<td class="semester-grade">
 						<input type="number" min="0" max="100" maxlength="3" minlength="1" name="sem-grade-input"
-							class="sem-grade-input" placeholder="100" required />
+							class="sem-grade-input" data-which-semester="second" placeholder="100" required />
 					</td>
-					<td class="points second-sem-points" data-second-sem-points="0.000">0.000</td>
+					<td class="points second-sem-points" data-sem-points="second">0.000</td>
+					<!-- Total -->
 					<td class="total" data-total-points="0.000">0.000</td>
 				</tr>
 				<!-- Class #3 -->
@@ -113,16 +119,19 @@
 							<option value="AP">AP</option>
 						</select>
 					</td>
+					<!-- First Semester -->
 					<td class="semester-grade">
 						<input type="number" min="0" max="100" maxlength="3" minlength="1" name="sem-grade-input"
-							class="sem-grade-input" placeholder="100" required />
+							class="sem-grade-input" data-which-semester="first" placeholder="100" required />
 					</td>
-					<td class="points first-sem-points" data-first-sem-points="0.000">0.000</td>
+					<td class="points first-sem-points" data-sem-points="first">0.000</td>
+					<!-- Second Semester -->
 					<td class="semester-grade">
 						<input type="number" min="0" max="100" maxlength="3" minlength="1" name="sem-grade-input"
-							class="sem-grade-input" placeholder="100" required />
+							class="sem-grade-input" data-which-semester="second" placeholder="100" required />
 					</td>
-					<td class="points second-sem-points" data-second-sem-points="0.000">0.000</td>
+					<td class="points second-sem-points" data-sem-points="second">0.000</td>
+					<!-- Total -->
 					<td class="total" data-total-points="0.000">0.000</td>
 				</tr>
 				<!-- Class #4 -->
@@ -137,16 +146,19 @@
 							<option value="AP">AP</option>
 						</select>
 					</td>
+					<!-- First Semester -->
 					<td class="semester-grade">
 						<input type="number" min="0" max="100" maxlength="3" minlength="1" name="sem-grade-input"
-							class="sem-grade-input" placeholder="100" required />
+							class="sem-grade-input" data-which-semester="first" placeholder="100" required />
 					</td>
-					<td class="points first-sem-points" data-first-sem-points="0.000">0.000</td>
+					<td class="points first-sem-points" data-sem-points="first">0.000</td>
+					<!-- Second Semester -->
 					<td class="semester-grade">
 						<input type="number" min="0" max="100" maxlength="3" minlength="1" name="sem-grade-input"
-							class="sem-grade-input" placeholder="100" required />
+							class="sem-grade-input" data-which-semester="second" placeholder="100" required />
 					</td>
-					<td class="points second-sem-points" data-second-sem-points="0.000">0.000</td>
+					<td class="points second-sem-points" data-sem-points="second">0.000</td>
+					<!-- Total -->
 					<td class="total" data-total-points="0.000">0.000</td>
 				</tr>
 				<!-- Class #5 -->
@@ -161,16 +173,19 @@
 							<option value="AP">AP</option>
 						</select>
 					</td>
+					<!-- First Semester -->
 					<td class="semester-grade">
 						<input type="number" min="0" max="100" maxlength="3" minlength="1" name="sem-grade-input"
-							class="sem-grade-input" placeholder="100" required />
+							class="sem-grade-input" data-which-semester="first" placeholder="100" required />
 					</td>
-					<td class="points first-sem-points" data-first-sem-points="0.000">0.000</td>
+					<td class="points first-sem-points" data-sem-points="first">0.000</td>
+					<!-- Second Semester -->
 					<td class="semester-grade">
 						<input type="number" min="0" max="100" maxlength="3" minlength="1" name="sem-grade-input"
-							class="sem-grade-input" placeholder="100" required />
+							class="sem-grade-input" data-which-semester="second" placeholder="100" required />
 					</td>
-					<td class="points second-sem-points" data-second-sem-points="0.000">0.000</td>
+					<td class="points second-sem-points" data-sem-points="second">0.000</td>
+					<!-- Total -->
 					<td class="total" data-total-points="0.000">0.000</td>
 				</tr>
 				<!-- Class #6 -->
@@ -185,16 +200,19 @@
 							<option value="AP">AP</option>
 						</select>
 					</td>
+					<!-- First Semester -->
 					<td class="semester-grade">
 						<input type="number" min="0" max="100" maxlength="3" minlength="1" name="sem-grade-input"
-							class="sem-grade-input" placeholder="100" required />
+							class="sem-grade-input" data-which-semester="first" placeholder="100" required />
 					</td>
-					<td class="points first-sem-points" data-first-sem-points="0.000">0.000</td>
+					<td class="points first-sem-points" data-sem-points="first">0.000</td>
+					<!-- Second Semester -->
 					<td class="semester-grade">
 						<input type="number" min="0" max="100" maxlength="3" minlength="1" name="sem-grade-input"
-							class="sem-grade-input" placeholder="100" required />
+							class="sem-grade-input" data-which-semester="second" placeholder="100" required />
 					</td>
-					<td class="points second-sem-points" data-second-sem-points="0.000">0.000</td>
+					<td class="points second-sem-points" data-sem-points="second">0.000</td>
+					<!-- Total -->
 					<td class="total" data-total-points="0.000">0.000</td>
 				</tr>
 				<!-- Class #7 -->
@@ -209,16 +227,19 @@
 							<option value="AP">AP</option>
 						</select>
 					</td>
+					<!-- First Semester -->
 					<td class="semester-grade">
 						<input type="number" min="0" max="100" maxlength="3" minlength="1" name="sem-grade-input"
-							class="sem-grade-input" placeholder="100" required />
+							class="sem-grade-input" data-which-semester="first" placeholder="100" required />
 					</td>
-					<td class="points first-sem-points" data-first-sem-points="0.000">0.000</td>
+					<td class="points first-sem-points" data-sem-points="first">0.000</td>
+					<!-- Second Semester -->
 					<td class="semester-grade">
 						<input type="number" min="0" max="100" maxlength="3" minlength="1" name="sem-grade-input"
-							class="sem-grade-input" placeholder="100" required />
+							class="sem-grade-input" data-which-semester="second" placeholder="100" required />
 					</td>
-					<td class="points second-sem-points" data-second-sem-points="0.000">0.000</td>
+					<td class="points second-sem-points" data-sem-points="second">0.000</td>
+					<!-- Total -->
 					<td class="total" data-total-points="0.000">0.000</td>
 				</tr>
 				<!-- Class #8 -->
@@ -233,16 +254,19 @@
 							<option value="AP">AP</option>
 						</select>
 					</td>
+					<!-- First Semester -->
 					<td class="semester-grade">
 						<input type="number" min="0" max="100" maxlength="3" minlength="1" name="sem-grade-input"
-							class="sem-grade-input" placeholder="100" required />
+							class="sem-grade-input" data-which-semester="first" placeholder="100" required />
 					</td>
-					<td class="points first-sem-points" data-first-sem-points="0.000">0.000</td>
+					<td class="points first-sem-points" data-sem-points="first">0.000</td>
+					<!-- Second Semester -->
 					<td class="semester-grade">
 						<input type="number" min="0" max="100" maxlength="3" minlength="1" name="sem-grade-input"
-							class="sem-grade-input" placeholder="100" required />
+							class="sem-grade-input" data-which-semester="second" placeholder="100" required />
 					</td>
-					<td class="points second-sem-points" data-second-sem-points="0.000">0.000</td>
+					<td class="points second-sem-points" data-sem-points="second">0.000</td>
+					<!-- Total -->
 					<td class="total" data-total-points="0.000">0.000</td>
 				</tr>
 				<!-- Class #9 -->
@@ -257,16 +281,19 @@
 							<option value="AP">AP</option>
 						</select>
 					</td>
+					<!-- First Semester -->
 					<td class="semester-grade">
 						<input type="number" min="0" max="100" maxlength="3" minlength="1" name="sem-grade-input"
-							class="sem-grade-input" placeholder="100" required />
+							class="sem-grade-input" data-which-semester="first" placeholder="100" required />
 					</td>
-					<td class="points first-sem-points" data-first-sem-points="0.000">0.000</td>
+					<td class="points first-sem-points" data-sem-points="first">0.000</td>
+					<!-- Second Semester -->
 					<td class="semester-grade">
 						<input type="number" min="0" max="100" maxlength="3" minlength="1" name="sem-grade-input"
-							class="sem-grade-input" placeholder="100" required />
+							class="sem-grade-input" data-which-semester="second" placeholder="100" required />
 					</td>
-					<td class="points second-sem-points" data-second-sem-points="0.000">0.000</td>
+					<td class="points second-sem-points" data-sem-points="second">0.000</td>
+					<!-- Total -->
 					<td class="total" data-total-points="0.000">0.000</td>
 				</tr>
 
