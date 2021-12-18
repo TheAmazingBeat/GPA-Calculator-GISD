@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>GPA Calculator</title>
+	<link rel="stylesheet" href="styles.css" />
+	<script src="script.js" defer></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+	<div class="table">
+		<table>
+			<caption>
+				GPA Calculator
+			</caption>
+
+			<colgroup>
+				<col span="2" class="class-info" />
+				<col span="2" class="first-semester" />
+				<col span="2" class="second-semester" />
+				<col span="1" class="whole-year" />
+			</colgroup>
+
+			<!-- TABLE HEADERS -->
+			<thead>
+				<tr>
+					<th scope="col" rowspan="2" class="class-info-header">
+						Class #
+					</th>
+					<th scope="col" rowspan="2" class="class-info-header">
+						Class Type<br />(AP, Regular, Honors, or Pre-AP)
+					</th>
+					<th scope="col" colspan="2" class="first-sem-header">
+						1st Semester
+					</th>
+					<th scope="col" colspan="2" class="second-sem-header">
+						2nd Semester
+					</th>
+					<th scope="col" rowspan="2" class="total-header">Total</th>
+				</tr>
+				<tr>
+					<th scope="col" class="first-sem-header">Semester Grade</th>
+					<th scope="col" class="first-sem-header">GPA Points</th>
+					<th scope="col" class="second-sem-header">Semester Grade</th>
+					<th scope="col" class="second-sem-header">GPA Points</th>
+				</tr>
+			</thead>
+
+			<!-- TABLE CONTENT -->
+			<tbody>
+				<!-- Class #1 -->
+				<tr>
+					<td class="class-number">1</td>
+					<td class="class-type">
+						<select name="Class Type" class="class-type-input">
+							<option value="N/A">N/A</option>
+							<option value="Regular">Regular</option>
+							<option value="Honors">Honors</option>
+							<option value="Pre-AP">Pre-AP</option>
+							<option value="AP">AP</option>
+						</select>
+					</td>
+					<td class="semester-grade">
+						<input type="number" min="0" max="100" maxlength="3" minlength="1" name="sem-grade-input"
+							class="sem-grade-input" placeholder="100" required />
+					</td>
+					<td class="points first-sem-points" data-first-sem-points="0.000">0.000</td>
+					<td class="semester-grade">
+						<input type="number" min="0" max="100" maxlength="3" minlength="1" name="sem-grade-input"
+							class="sem-grade-input" placeholder="100" required />
+					</td>
+					<td class="points second-sem-points" data-second-sem-points="0.000">0.000</td>
+					<td class="total" data-total-points="0.000">0.000</td>
+				</tr>
+				<!-- Class #2 -->
+				<tr>
+					<td class="class-number">2</td>
+					<td class="class-type">
+						<select name="Class Type" class="class-type-input">
+							<option value="N/A">N/A</option>
+							<option value="Regular">Regular</option>
+							<option value="Honors">Honors</option>
+							<option value="Pre-AP">Pre-AP</option>
+							<option value="AP">AP</option>
+						</select>
+					</td>
+					<td class="semester-grade">
+						<input type="number" min="0" max="100" maxlength="3" minlength="1" name="sem-grade-input"
+							class="sem-grade-input" placeholder="100" required />
+					</td>
+					<td class="points first-sem-points" data-first-sem-points="0.000">0.000</td>
+					<td class="semester-grade">
+						<input type="number" min="0" max="100" maxlength="3" minlength="1" name="sem-grade-input"
+							class="sem-grade-input" placeholder="100" required />
+					</td>
+					<td class="points second-sem-points" data-second-sem-points="0.000">0.000</td>
+					<td class="total" data-total-points="0.000">0.000</td>
+				</tr>
+				<!-- Class #3 -->
+				<tr>
+					<td class="class-number">3</td>
+					<td class="class-type">
+						<select name="Class Type" class="class-type-input">
+							<option value="N/A">N/A</option>
+							<option value="Regular">Regular</option>
+							<option value="Honors">Honors</option>
+							<option value="Pre-AP">Pre-AP</option>
+							<option value="AP">AP</option>
+						</select>
+					</td>
+					<td class="semester-grade">
+						<input type="number" min="0" max="100" maxlength="3" minlength="1" name="sem-grade-input"
+							class="sem-grade-input" placeholder="100" required />
+					</td>
+					<td class="points first-sem-points" data-first-sem-points="0.000">0.000</td>
+					<td class="semester-grade">
+						<input type="number" min="0" max="100" maxlength="3" minlength="1" name="sem-grade-input"
+							class="sem-grade-input" placeholder="100" required />
+					</td>
+					<td class="points second-sem-points" data-second-sem-points="0.000">0.000</td>
+					<td class="total" data-total-points="0.000">0.000</td>
+				</tr>
+				<!-- Class #4 -->
+				<tr>
+					<td class="class-number">4</td>
+					<td class="class-type">
+						<select name="Class Type" class="class-type-input">
+							<option value="N/A">N/A</option>
+							<option value="Regular">Regular</option>
+							<option value="Honors">Honors</option>
+							<option value="Pre-AP">Pre-AP</option>
+							<option value="AP">AP</option>
+						</select>
+					</td>
+					<td class="semester-grade">
+						<input type="number" min="0" max="100" maxlength="3" minlength="1" name="sem-grade-input"
+							class="sem-grade-input" placeholder="100" required />
+					</td>
+					<td class="points first-sem-points" data-first-sem-points="0.000">0.000</td>
+					<td class="semester-grade">
+						<input type="number" min="0" max="100" maxlength="3" minlength="1" name="sem-grade-input"
+							class="sem-grade-input" placeholder="100" required />
+					</td>
+					<td class="points second-sem-points" data-second-sem-points="0.000">0.000</td>
+					<td class="total" data-total-points="0.000">0.000</td>
+				</tr>
+				<!-- Class #5 -->
+				<tr>
+					<td class="class-number">5</td>
+					<td class="class-type">
+						<select name="Class Type" class="class-type-input">
+							<option value="N/A">N/A</option>
+							<option value="Regular">Regular</option>
+							<option value="Honors">Honors</option>
+							<option value="Pre-AP">Pre-AP</option>
+							<option value="AP">AP</option>
+						</select>
+					</td>
+					<td class="semester-grade">
+						<input type="number" min="0" max="100" maxlength="3" minlength="1" name="sem-grade-input"
+							class="sem-grade-input" placeholder="100" required />
+					</td>
+					<td class="points first-sem-points" data-first-sem-points="0.000">0.000</td>
+					<td class="semester-grade">
+						<input type="number" min="0" max="100" maxlength="3" minlength="1" name="sem-grade-input"
+							class="sem-grade-input" placeholder="100" required />
+					</td>
+					<td class="points second-sem-points" data-second-sem-points="0.000">0.000</td>
+					<td class="total" data-total-points="0.000">0.000</td>
+				</tr>
+				<!-- Class #6 -->
+				<tr>
+					<td class="class-number">6</td>
+					<td class="class-type">
+						<select name="Class Type" class="class-type-input">
+							<option value="N/A">N/A</option>
+							<option value="Regular">Regular</option>
+							<option value="Honors">Honors</option>
+							<option value="Pre-AP">Pre-AP</option>
+							<option value="AP">AP</option>
+						</select>
+					</td>
+					<td class="semester-grade">
+						<input type="number" min="0" max="100" maxlength="3" minlength="1" name="sem-grade-input"
+							class="sem-grade-input" placeholder="100" required />
+					</td>
+					<td class="points first-sem-points" data-first-sem-points="0.000">0.000</td>
+					<td class="semester-grade">
+						<input type="number" min="0" max="100" maxlength="3" minlength="1" name="sem-grade-input"
+							class="sem-grade-input" placeholder="100" required />
+					</td>
+					<td class="points second-sem-points" data-second-sem-points="0.000">0.000</td>
+					<td class="total" data-total-points="0.000">0.000</td>
+				</tr>
+				<!-- Class #7 -->
+				<tr>
+					<td class="class-number">7</td>
+					<td class="class-type">
+						<select name="Class Type" class="class-type-input">
+							<option value="N/A">N/A</option>
+							<option value="Regular">Regular</option>
+							<option value="Honors">Honors</option>
+							<option value="Pre-AP">Pre-AP</option>
+							<option value="AP">AP</option>
+						</select>
+					</td>
+					<td class="semester-grade">
+						<input type="number" min="0" max="100" maxlength="3" minlength="1" name="sem-grade-input"
+							class="sem-grade-input" placeholder="100" required />
+					</td>
+					<td class="points first-sem-points" data-first-sem-points="0.000">0.000</td>
+					<td class="semester-grade">
+						<input type="number" min="0" max="100" maxlength="3" minlength="1" name="sem-grade-input"
+							class="sem-grade-input" placeholder="100" required />
+					</td>
+					<td class="points second-sem-points" data-second-sem-points="0.000">0.000</td>
+					<td class="total" data-total-points="0.000">0.000</td>
+				</tr>
+				<!-- Class #8 -->
+				<tr>
+					<td class="class-number">8</td>
+					<td class="class-type">
+						<select name="Class Type" class="class-type-input">
+							<option value="N/A">N/A</option>
+							<option value="Regular">Regular</option>
+							<option value="Honors">Honors</option>
+							<option value="Pre-AP">Pre-AP</option>
+							<option value="AP">AP</option>
+						</select>
+					</td>
+					<td class="semester-grade">
+						<input type="number" min="0" max="100" maxlength="3" minlength="1" name="sem-grade-input"
+							class="sem-grade-input" placeholder="100" required />
+					</td>
+					<td class="points first-sem-points" data-first-sem-points="0.000">0.000</td>
+					<td class="semester-grade">
+						<input type="number" min="0" max="100" maxlength="3" minlength="1" name="sem-grade-input"
+							class="sem-grade-input" placeholder="100" required />
+					</td>
+					<td class="points second-sem-points" data-second-sem-points="0.000">0.000</td>
+					<td class="total" data-total-points="0.000">0.000</td>
+				</tr>
+				<!-- Class #9 -->
+				<tr>
+					<td class="class-number">9</td>
+					<td class="class-type">
+						<select name="Class Type" class="class-type-input">
+							<option value="N/A">N/A</option>
+							<option value="Regular">Regular</option>
+							<option value="Honors">Honors</option>
+							<option value="Pre-AP">Pre-AP</option>
+							<option value="AP">AP</option>
+						</select>
+					</td>
+					<td class="semester-grade">
+						<input type="number" min="0" max="100" maxlength="3" minlength="1" name="sem-grade-input"
+							class="sem-grade-input" placeholder="100" required />
+					</td>
+					<td class="points first-sem-points" data-first-sem-points="0.000">0.000</td>
+					<td class="semester-grade">
+						<input type="number" min="0" max="100" maxlength="3" minlength="1" name="sem-grade-input"
+							class="sem-grade-input" placeholder="100" required />
+					</td>
+					<td class="points second-sem-points" data-second-sem-points="0.000">0.000</td>
+					<td class="total" data-total-points="0.000">0.000</td>
+				</tr>
+
+			</tbody>
+
+			<!-- TABLE FOOTER -->
+			<tfoot>
+				<tr>
+					<th colspan="6" class="total-header">Total Grade Points:</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th colspan="6" class="total-header">
+						Total Courses with GPA Credit
+					</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th colspan="6" class="gpa-header">GPA (5.0 Scale)</th>
+					<td></td>
+				</tr>
+			</tfoot>
+
+		</table>
+		<div class="calculate-buttons">
+			<button id="calculate2022" class="calculate-btn">Calculate for 2022 (and below)</button>
+			<button id="calculate2023" class="calculate-btn">Calculate for 2023 (and above)</button>
+
+		</div>
+	</div>
+</body>
+
+</html>
