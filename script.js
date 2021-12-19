@@ -2,18 +2,12 @@ import { table2022 } from './gradetable.js';
 import { table2023 } from './gradetable.js';
 
 const classes = [];
-// firstSemGrades = [],
-// secondSemGrades = [],
-// firstSemPoints = [],
-// secondSemPoints = [];
 let semPoints = [];
 let year = 2022;
 
 $(document).ready(() => {
-	getClassRows();
-	// getClassType(year);
-	// getSemGrades('first');
-	// getGradePoint('first');
+	getClassRows(Array.from($('.class-number')).length);
+	// console.log(classes);
 
 	// const observer = new MutationObserver(calculate);
 	// observe(observer);
@@ -23,22 +17,29 @@ $(document).ready(() => {
 	$('#calculate2023').click((year = 2023));
 });
 
-const getClassRows = () => {
-	const totalNumRows = Array.from($('.class-number')).length;
+const getClassRows = (totalNumRows) => {
 	const row = Array.from($('tr.class-row'));
 	for (let i = 0; i < totalNumRows; i++) {
-
 		let classRow = {
 			id: i + 1,
 			element: row[i],
 			classType: getClassType(year, i),
-			firstSemGrade: 0,
+			firstSemGrade: getSemGrade('first', i),
 			firstSemPoint: 0,
-			secondSemGrade: 0,
+			secondSemGrade: getSemGrade('second', i),
 			secondSemPoint: 0,
-			totalPoint: firstSemPoint + secondSemPoint
+			totalPoints: null,
 		};
 
+		classRow.firstSemPoint = getGradePoint(
+			'first',
+			i,
+			classRow.classType,
+			classRow.firstSemGrade
+		);
+		classRow.totalPoints = getClassTotalPoint(classRow.firstSemPoint, classRow.secondSemPoint, i);
+
+		console.log(classRow);
 		classes.push(classRow);
 	}
 };
@@ -46,7 +47,7 @@ const getClassRows = () => {
 const getClassType = (year, index) => {
 	// let classTypeArray = Array.from($('.class-type-input'));
 	// classTypeArray.forEach((classType) => {
-		
+
 	let classTypeInput = Array.from($('.class-type-input'))[index];
 	let classType;
 	if (year == 2022) {
@@ -99,35 +100,37 @@ const getClassType = (year, index) => {
 	// console.log(classes);
 };
 
-const getSemGrades = (semester) => {
+const getSemGrade = (semester, index) => {
 	let semGrade = [];
 	if (semester == 'first')
-		semGrade = Array.from($("input[data-which-semester='first']"));
-	else semGrade = Array.from($("input[data-which-semester='second']"));
+		semGrade = Array.from($("input[data-which-semester='first']"))[index]
+			.value;
+	else if (semester == 'second')
+		semGrade = Array.from(
+			$("input[data-which-semester='second']")[index].value
+		);
 
-	semGrade.forEach((grade) => {
-		let gradeValue = grade.value;
-		if (gradeValue == '') gradeValue = 0;
-		else gradeValue = parseFloat(gradeValue);
-		if (semester == 'first') firstSemGrades.push(gradeValue);
-		else secondSemGrades.push(gradeValue);
-	});
+	// semGrade.forEach((grade) => {
+	// 	let gradeValue = grade.value;
+	// 	if (gradeValue == '') gradeValue = 0;
+	// 	else gradeValue = parseFloat(gradeValue);
+	// 	if (semester == 'first') firstSemGrades.push(gradeValue);
+	// 	else secondSemGrades.push(gradeValue);
+	// });
 
-	if ((semester = 'first'))
-		console.log(`First Semester Grades:: ${firstSemGrades}`);
-	else console.log(`First Semester Grades:: ${secondSemGrades}`);
+	if (semGrade == '') semGrade = 0;
+	else semGrade = parseFloat(semGrade);
+	return semGrade;
 };
 
-const getGradePoint = (semester) => {
-	if (semester == 'first') {
-		semPoints = Array.from($("td[data-sem-points='first']"));
-		console.log(semPoints);
-		for (let i = 0; i < semPoints.length; i++) {
-			$(semPoints[i]).text(
-				iterateThroughTable(classes[i], firstSemGrades[i])
-			);
-		}
-	} else semPoints = Array.from($("td[data-sem-points='second']"));
+const getGradePoint = (semester, index, type, grade) => {
+	if (semester == 'first')
+		semPoints = Array.from($("td[data-sem-points='first']"))[index];
+	else semPoints = Array.from($("td[data-sem-points='second']"))[index];
+
+	$(semPoints).text(iterateThroughTable(type, grade).toFixed(3));
+
+	return iterateThroughTable(type, grade);
 };
 
 const iterateThroughTable = (classType, grade) => {
@@ -151,11 +154,13 @@ const between = (number, min, max) => {
 	return number >= min && number <= max;
 };
 
-const calculate = () => {
-	// TODO function for getting GPA point from table (gradePoint)
-	// TODO Get all total points from each row and sum them up
-	// TODO Get all numbers of classes that has GPA credit
-	// TODO Calculate gpa
+const getClassTotalPoint = (firstSemGrade, secondSemGrade, index) => {
+	const total = firstSemGrade + secondSemGrade;
+
+	const totalCell = Array.from($('td.total'))[index];
+	totalCell.text(total.toFixed(3));
+
+	return total;
 };
 
 const config = { attributes: true };
