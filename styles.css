@@ -53,15 +53,18 @@ tfoot {
 	background-color: #f3f3f3;
 }
 
-.first-sem-header {
+.first-sem-header,
+.first-semester {
 	background-color: #c9daf8;
 }
 
-.second-sem-header {
+.second-sem-header,
+.second-semester {
 	background-color: #fce5cd;
 }
 
-.total-header {
+.total-header,
+.total {
 	background-color: #d9d2e9;
 }
 
@@ -85,7 +88,8 @@ tfoot {
 	width: 100%;
 	border: 0;
 	padding: 0.5rem 1rem;
-	opacity: 0.8;
+	/* opacity: 0.8; */
+	background-color: #fff;
 	transition: all 300ms;
 }
 
@@ -100,20 +104,20 @@ tfoot {
 	padding: 0.5rem 1rem;
 }
 
-.calculate-buttons{
-   display: flex;
-   width: 100%;
-   flex-direction: row;
-   align-content: center;
-   /* align-items: center; */
-   justify-content: center;
-   /* justify-items: center; */
+.calculate-buttons {
+	display: flex;
+	width: 100%;
+	flex-direction: row;
+	align-content: center;
+	/* align-items: center; */
+	justify-content: center;
+	/* justify-items: center; */
 }
 
 .calculate-btn {
 	width: 20vw;
 	margin: 3rem 1.5rem;
 	padding: 1rem;
-   font-weight: bold;
-   transition: all 300ms;
+	font-weight: bold;
+	transition: all 300ms;
 }

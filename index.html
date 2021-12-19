@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>GPA Calculator</title>
 	<link rel="stylesheet" href="styles.css" />
-	<script src="script.js" type="module" defer></script>
+	<script src="./script.js id="classOne"" type="module" defer></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
 		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
@@ -54,12 +54,12 @@
 			<!-- TABLE CONTENT -->
 			<tbody>
 				<!-- Class #1 -->
-				<tr>
+				<tr id="classOne" class="class-row">
 					<td class="class-number">1</td>
 					<td class="class-type">
 						<select name="Class Type" class="class-type-input">
 							<option value="N/A">N/A</option>
-							<option value="Regular">Regular</option>
+							<option value="Regular" selected>Regular</option>
 							<option value="Honors">Honors</option>
 							<option value="Pre-AP">Pre-AP</option>
 							<option value="AP">AP</option>
@@ -68,7 +68,7 @@
 					<!-- First Semester -->
 					<td class="semester-grade">
 						<input type="number" min="0" max="100" maxlength="3" minlength="1" name="sem-grade-input"
-							class="sem-grade-input" data-which-semester="first" placeholder="100" required />
+							class="sem-grade-input" data-which-semester="first" placeholder="100" value="100" />
 					</td>
 					<td class="points first-sem-points" data-sem-points="first">0.000</td>
 					<!-- Second Semester -->
@@ -81,7 +81,7 @@
 					<td class="total" data-total-points="0.000">0.000</td>
 				</tr>
 				<!-- Class #2 -->
-				<tr>
+				<tr id="classTwo" class="class-row">
 					<td class="class-number">2</td>
 					<td class="class-type">
 						<select name="Class Type" class="class-type-input">
@@ -108,7 +108,7 @@
 					<td class="total" data-total-points="0.000">0.000</td>
 				</tr>
 				<!-- Class #3 -->
-				<tr>
+				<tr id="classThree" class="class-row">
 					<td class="class-number">3</td>
 					<td class="class-type">
 						<select name="Class Type" class="class-type-input">
@@ -135,7 +135,7 @@
 					<td class="total" data-total-points="0.000">0.000</td>
 				</tr>
 				<!-- Class #4 -->
-				<tr>
+				<tr id="classFour" class="class-row">
 					<td class="class-number">4</td>
 					<td class="class-type">
 						<select name="Class Type" class="class-type-input">
@@ -162,7 +162,7 @@
 					<td class="total" data-total-points="0.000">0.000</td>
 				</tr>
 				<!-- Class #5 -->
-				<tr>
+				<tr id="classFive" class="class-row">
 					<td class="class-number">5</td>
 					<td class="class-type">
 						<select name="Class Type" class="class-type-input">
@@ -189,7 +189,7 @@
 					<td class="total" data-total-points="0.000">0.000</td>
 				</tr>
 				<!-- Class #6 -->
-				<tr>
+				<tr id="classSix" class="class-row">
 					<td class="class-number">6</td>
 					<td class="class-type">
 						<select name="Class Type" class="class-type-input">
@@ -216,7 +216,7 @@
 					<td class="total" data-total-points="0.000">0.000</td>
 				</tr>
 				<!-- Class #7 -->
-				<tr>
+				<tr id="classSeven" class="class-row">
 					<td class="class-number">7</td>
 					<td class="class-type">
 						<select name="Class Type" class="class-type-input">
@@ -243,7 +243,7 @@
 					<td class="total" data-total-points="0.000">0.000</td>
 				</tr>
 				<!-- Class #8 -->
-				<tr>
+				<tr id="classEight" class="class-row">
 					<td class="class-number">8</td>
 					<td class="class-type">
 						<select name="Class Type" class="class-type-input">
@@ -270,7 +270,7 @@
 					<td class="total" data-total-points="0.000">0.000</td>
 				</tr>
 				<!-- Class #9 -->
-				<tr>
+				<tr id="classNine" class="class-row">
 					<td class="class-number">9</td>
 					<td class="class-type">
 						<select name="Class Type" class="class-type-input">

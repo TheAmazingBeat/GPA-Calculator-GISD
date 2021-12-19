@@ -1,4 +1,4 @@
-export const gpa2022 = {
+export const table2022 = {
 	// BASIC LEVEL GRADE POINTS
 	setOne: {
 		Aplus: 3.0,
@@ -66,7 +66,7 @@ export const gpa2022 = {
 	},
 };
 
-export const gpa2023 = {
+export const table2023 = {
 	// BASIC LEVEL GRADE POINTS
 	levelOne: {
 		Aplus: 3.0,
@@ -132,7 +132,7 @@ export const gpa2023 = {
 		Cminus: 2.833,
 		F: 0.0,
 	},
-	// HONORS/PRE-AP/AP GRADE POINTS
+	// IB / AMS GRADE POINTS
 	levelFive: {
 		Aplus: 6.0,
 		A: 5.667,
