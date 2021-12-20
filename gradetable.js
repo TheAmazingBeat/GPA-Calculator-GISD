@@ -64,6 +64,7 @@ export const table2022 = {
 		Cminus: 3.333,
 		F: 0.0,
 	},
+	na: { empty: 0 },
 };
 
 export const table2023 = {
@@ -158,4 +159,5 @@ export const table2023 = {
 		Cminus: 3.833,
 		F: 0.0,
 	},
+	na: { empty: 0 },
 };
