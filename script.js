@@ -65,7 +65,7 @@ const getClassRows = (totalNumRows) => {
 		classes.push(classRow);
 	}
 
-	console.log(classes);
+	// console.log(classes);
 };
 
 // Returns the class type in the class row
@@ -197,7 +197,7 @@ const between = (number, min, max) => {
 // Gets the total grade points for the class row
 const getClassTotalPoint = (firstSemGrade, secondSemGrade, index) => {
 	if (firstSemGrade == 'empty') firstSemGrade = 0;
-	if ((secondSemGrade = 'empty')) secondSemGrade = 0;
+	if ((secondSemGrade == 'empty')) secondSemGrade = 0;
 	const total = (parseFloat(firstSemGrade) + parseFloat(secondSemGrade)).toFixed(3);
 
 	const totalCell = Array.from($('.total'));
@@ -208,45 +208,25 @@ const getClassTotalPoint = (firstSemGrade, secondSemGrade, index) => {
 
 const getTotalGradePoints = () => {
 	let total = 0;
-	const cell = $('#totalGradePoints');
 
 	classes.forEach((object) => {
 		total += parseFloat(object.totalPoints);
 	});
 
-	// $(cell).text(total.toFixed(3));
 	return total;
 };
 
-const manipulateFooter = (points, courses, gpa) => {
-	const totalPoints = $('#totalGradePoints');
-	const totalCourses = $('#totalCourses');
-	const gpaCell = $('#GPA');
-	$(totalPoints).text(points.toFixed(3));
-	$(totalCourses).text(courses.toFixed(3));
-	$(gpaCell).text(gpa.toFixed(3));
-};
-
+// Counts 0.5 points for every class in the semester
 const getTotalCourses = () => {
 	let total = 0;
-	const cell = $('#totalCourses');
 
 	classes.forEach((object) => {
 		if (object.classType != 'N/A') {
-			// let fSemGrade = $($(object.element).children('.semester-grade').children()[0]);
-			// if (fSemGrade.value != '') {
-			// 	total += 0.5;
-			// }
-			// let sSemGrade = $($(object.element).children('.semester-grade').children()[1]);
-			// if (sSemGrade.value != '') {
-			// 	total += 0.5;
-			// }
 			if (object.firstSemGrade != 'empty') total += 0.5;
 			if (object.secondSemGrade != 'empty') total += 0.5;
 		}
 	});
 
-	$(cell).text(total.toFixed(3));
 	return total;
 };
 
@@ -259,4 +239,14 @@ const calculateGPA = () => {
 	manipulateFooter(points, courses, gpa);
 	// $(cell).text(gpa.toFixed(3));
 	return gpa;
+};
+
+// Change values client-side
+const manipulateFooter = (points, courses, gpa) => {
+	const totalPoints = $('#totalGradePoints');
+	const totalCourses = $('#totalCourses');
+	const gpaCell = $('#GPA');
+	$(totalPoints).text(points.toFixed(3));
+	$(totalCourses).text(courses.toFixed(3));
+	$(gpaCell).text(gpa.toFixed(3));
 };
