@@ -18,8 +18,16 @@ $(document).ready(() => {
 	calculateGPA();
 
 	// Changes the year for gpa table when buttons are clicked
-	$('#calculate2022').click((year = 2022));
-	$('#calculate2023').click((year = 2023));
+	$('#calculate2022').click(() => {
+		year = 2022;
+		$('#calculate2023').toggleClass('year-active');
+		$('#calculate2022').toggleClass('year-active')
+	});
+	$('#calculate2023').click(() => {
+		year = 2023;
+		$('#calculate2022').toggleClass('year-active');
+		$('#calculate2023').toggleClass('year-active');
+	});
 });
 
 // Onchange event listener
@@ -175,16 +183,16 @@ const iterateThroughTable = (classType, grade) => {
 	let gradePoint = 0;
 
 	if (classType == 'N/A') gradePoint = 0;
-	if (between(grade, 97, 100)) gradePoint = (classType.Aplus)/2;
-	if (between(grade, 94, 96)) gradePoint = (classType.A)/2;
-	if (between(grade, 90, 93)) gradePoint = (classType.Aminus)/2;
-	if (between(grade, 89, 87)) gradePoint = (classType.Bplus)/2;
-	if (between(grade, 84, 86)) gradePoint = (classType.B)/2;
-	if (between(grade, 80, 83)) gradePoint = (classType.Bminus)/2;
-	if (between(grade, 77, 79)) gradePoint = (classType.Cplus)/2;
-	if (between(grade, 74, 76)) gradePoint = (classType.C)/2;
-	if (between(grade, 70, 73)) gradePoint = (classType.Cminus)/2;
-	if (between(grade, 0, 69)) gradePoint = (classType.F)/2;
+	if (between(grade, 97, 100)) gradePoint = classType.Aplus / 2;
+	if (between(grade, 94, 96)) gradePoint = classType.A / 2;
+	if (between(grade, 90, 93)) gradePoint = classType.Aminus / 2;
+	if (between(grade, 89, 87)) gradePoint = classType.Bplus / 2;
+	if (between(grade, 84, 86)) gradePoint = classType.B / 2;
+	if (between(grade, 80, 83)) gradePoint = classType.Bminus / 2;
+	if (between(grade, 77, 79)) gradePoint = classType.Cplus / 2;
+	if (between(grade, 74, 76)) gradePoint = classType.C / 2;
+	if (between(grade, 70, 73)) gradePoint = classType.Cminus / 2;
+	if (between(grade, 0, 69)) gradePoint = classType.F / 2;
 
 	return gradePoint.toFixed(3);
 };
@@ -197,7 +205,7 @@ const between = (number, min, max) => {
 // Gets the total grade points for the class row
 const getClassTotalPoint = (firstSemGrade, secondSemGrade, index) => {
 	if (firstSemGrade == 'empty') firstSemGrade = 0;
-	if ((secondSemGrade == 'empty')) secondSemGrade = 0;
+	if (secondSemGrade == 'empty') secondSemGrade = 0;
 	const total = (parseFloat(firstSemGrade) + parseFloat(secondSemGrade)).toFixed(3);
 
 	const totalCell = Array.from($('.total'));
