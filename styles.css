@@ -76,7 +76,7 @@ tfoot {
 .class-type,
 .semester-grade-input,
 .points,
-.total {
+.total, #GPA, #totalCourses, #totalGradePoints {
 	text-align: center;
 }
 

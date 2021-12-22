@@ -59,7 +59,7 @@
 					<td class="class-type">
 						<select name="Class Type" class="class-type-input">
 							<option value="N/A">N/A</option>
-							<option value="Regular" selected>Regular</option>
+							<option value="Regular">Regular</option>
 							<option value="Honors">Honors</option>
 							<option value="Pre-AP">Pre-AP</option>
 							<option value="AP">AP</option>
@@ -68,7 +68,7 @@
 					<!-- First Semester -->
 					<td class="semester-grade">
 						<input type="number" min="0" max="100" maxlength="3" minlength="1" name="sem-grade-input"
-							class="sem-grade-input" data-which-semester="first" placeholder="100" value="100" />
+							class="sem-grade-input" data-which-semester="first" placeholder="100"/>
 					</td>
 					<td class="points first-sem-points" data-sem-points="first">0.000</td>
 					<!-- Second Semester -->
@@ -303,17 +303,17 @@
 			<tfoot>
 				<tr>
 					<th colspan="6" class="total-header">Total Grade Points:</th>
-					<td></td>
+					<td id="totalGradePoints"></td>
 				</tr>
 				<tr>
 					<th colspan="6" class="total-header">
 						Total Courses with GPA Credit
 					</th>
-					<td></td>
+					<td id="totalCourses"></td>
 				</tr>
 				<tr>
 					<th colspan="6" class="gpa-header">GPA (5.0 Scale)</th>
-					<td></td>
+					<td id="GPA"></td>
 				</tr>
 			</tfoot>
 

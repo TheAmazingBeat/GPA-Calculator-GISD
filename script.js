@@ -1,18 +1,39 @@
 import { table2022 } from './gradetable.js';
 import { table2023 } from './gradetable.js';
 
-const classes = [];
+let classes = [];
 let year = 2022;
+let numOfClassRows = Array.from($('.class-number')).length;
 
 $(document).ready(() => {
-	getClassRows(Array.from($('.class-number')).length);
+	getClassRows(numOfClassRows);
+
+	// detect if the class-type-input has changes
+	let typeInputs = Array.from($('.class-type-input'));
+	detectChanges(typeInputs, numOfClassRows);
+	// detect if the sem-grade-input has changes
+	let gradeInputs = Array.from($('.sem-grade-input'));
+	detectChanges(gradeInputs, numOfClassRows);
+
+	calculateGPA();
 
 	// Changes the year for gpa table when buttons are clicked
 	$('#calculate2022').click((year = 2022));
 	$('#calculate2023').click((year = 2023));
 });
 
+// Onchange event listener
+const detectChanges = (array, length) => {
+	array.forEach((element) => {
+		$(element).blur(() => {
+			getClassRows(length);
+			calculateGPA();
+		});
+	});
+};
+
 const getClassRows = (totalNumRows) => {
+	classes = [];
 	const row = Array.from($('tr.class-row'));
 
 	for (let i = 0; i < totalNumRows; i++) {
@@ -41,9 +62,10 @@ const getClassRows = (totalNumRows) => {
 		);
 		classRow.totalPoints = getClassTotalPoint(classRow.firstSemPoint, classRow.secondSemPoint, i);
 
-		console.log(classRow);
 		classes.push(classRow);
 	}
+
+	console.log(classes);
 };
 
 // Returns the class type in the class row
@@ -61,10 +83,19 @@ const getClassType = (year, index) => {
 			case 'Dual Credit':
 				classType = table2022.setThree;
 				break;
-			case 'Honors' || 'Pre-AP' || 'AP':
+			case 'Honors':
 				classType = table2022.setFour;
 				break;
-			case 'Int-H' || 'IB':
+			case 'Pre-AP':
+				classType = table2022.setFour;
+				break;
+			case 'AP':
+				classType = table2022.setFour;
+				break;
+			case 'Int-H':
+				classType = table2022.setFive;
+				break;
+			case 'IB':
 				classType = table2022.setFive;
 				break;
 			default:
@@ -79,13 +110,25 @@ const getClassType = (year, index) => {
 			case 'Regular':
 				classType = table2023.levelTwo;
 				break;
-			case 'Int-H' || 'Honors' || 'Pre-AP':
+			case 'Int-H':
 				classType = table2023.levelThree;
 				break;
-			case 'AP' || 'Dual Credit':
+			case 'Honors':
+				classType = table2023.levelThree;
+				break;
+			case 'Pre-AP':
+				classType = table2023.levelThree;
+				break;
+			case 'AP':
 				classType = table2023.levelFour;
 				break;
-			case 'IB' || 'AMS':
+			case 'Dual Credit':
+				classType = table2023.levelFour;
+				break;
+			case 'IB':
+				classType = table2023.levelFive;
+				break;
+			case 'AMS':
 				classType = table2023.levelFive;
 				break;
 			default:
@@ -99,14 +142,17 @@ const getClassType = (year, index) => {
 // Returns the semester grade in the class ro
 const getSemGrade = (semester, index) => {
 	let semGrade = [];
-	if (semester == 'first')
-		semGrade = Array.from($("input[data-which-semester='first']"))[index].value;
+	let grade = 0;
+	if (semester == 'first') semGrade = Array.from($("input[data-which-semester='first']"))[index];
 	else if (semester == 'second')
-		semGrade = Array.from($("input[data-which-semester='second']")[index].value);
+		semGrade = Array.from($("input[data-which-semester='second']"))[index];
 
-	if (semGrade == '') semGrade = 0;
-	else semGrade = parseFloat(semGrade);
-	return semGrade;
+	if (semGrade.value == '') {
+		grade = 'empty';
+	} else {
+		grade = semGrade.value;
+	}
+	return grade;
 };
 
 // Gets the grade points for the class row
@@ -129,16 +175,16 @@ const iterateThroughTable = (classType, grade) => {
 	let gradePoint = 0;
 
 	if (classType == 'N/A') gradePoint = 0;
-	if (between(grade, 97, 100)) gradePoint = classType.Aplus;
-	if (between(grade, 94, 96)) gradePoint = classType.A;
-	if (between(grade, 90, 93)) gradePoint = classType.Aminus;
-	if (between(grade, 89, 87)) gradePoint = classType.Bplus;
-	if (between(grade, 84, 86)) gradePoint = classType.B;
-	if (between(grade, 80, 83)) gradePoint = classType.Bminus;
-	if (between(grade, 77, 79)) gradePoint = classType.Cplus;
-	if (between(grade, 74, 76)) gradePoint = classType.C;
-	if (between(grade, 70, 73)) gradePoint = classType.Cminus;
-	if (between(grade, 0, 69)) gradePoint = classType.F;
+	if (between(grade, 97, 100)) gradePoint = (classType.Aplus)/2;
+	if (between(grade, 94, 96)) gradePoint = (classType.A)/2;
+	if (between(grade, 90, 93)) gradePoint = (classType.Aminus)/2;
+	if (between(grade, 89, 87)) gradePoint = (classType.Bplus)/2;
+	if (between(grade, 84, 86)) gradePoint = (classType.B)/2;
+	if (between(grade, 80, 83)) gradePoint = (classType.Bminus)/2;
+	if (between(grade, 77, 79)) gradePoint = (classType.Cplus)/2;
+	if (between(grade, 74, 76)) gradePoint = (classType.C)/2;
+	if (between(grade, 70, 73)) gradePoint = (classType.Cminus)/2;
+	if (between(grade, 0, 69)) gradePoint = (classType.F)/2;
 
 	return gradePoint.toFixed(3);
 };
@@ -150,6 +196,8 @@ const between = (number, min, max) => {
 
 // Gets the total grade points for the class row
 const getClassTotalPoint = (firstSemGrade, secondSemGrade, index) => {
+	if (firstSemGrade == 'empty') firstSemGrade = 0;
+	if ((secondSemGrade = 'empty')) secondSemGrade = 0;
 	const total = (parseFloat(firstSemGrade) + parseFloat(secondSemGrade)).toFixed(3);
 
 	const totalCell = Array.from($('.total'));
@@ -158,12 +206,57 @@ const getClassTotalPoint = (firstSemGrade, secondSemGrade, index) => {
 	return total;
 };
 
-const config = { attributes: true };
+const getTotalGradePoints = () => {
+	let total = 0;
+	const cell = $('#totalGradePoints');
 
-// Adds class-type-inputs as targets for the MutationObserver API
-const observe = (observer) => {
-	let classTypeArray = Array.from($('.class-type-input'));
-	classTypeArray.forEach((classType) => {
-		observer.observe(classType, config);
+	classes.forEach((object) => {
+		total += parseFloat(object.totalPoints);
 	});
+
+	// $(cell).text(total.toFixed(3));
+	return total;
+};
+
+const manipulateFooter = (points, courses, gpa) => {
+	const totalPoints = $('#totalGradePoints');
+	const totalCourses = $('#totalCourses');
+	const gpaCell = $('#GPA');
+	$(totalPoints).text(points.toFixed(3));
+	$(totalCourses).text(courses.toFixed(3));
+	$(gpaCell).text(gpa.toFixed(3));
+};
+
+const getTotalCourses = () => {
+	let total = 0;
+	const cell = $('#totalCourses');
+
+	classes.forEach((object) => {
+		if (object.classType != 'N/A') {
+			// let fSemGrade = $($(object.element).children('.semester-grade').children()[0]);
+			// if (fSemGrade.value != '') {
+			// 	total += 0.5;
+			// }
+			// let sSemGrade = $($(object.element).children('.semester-grade').children()[1]);
+			// if (sSemGrade.value != '') {
+			// 	total += 0.5;
+			// }
+			if (object.firstSemGrade != 'empty') total += 0.5;
+			if (object.secondSemGrade != 'empty') total += 0.5;
+		}
+	});
+
+	$(cell).text(total.toFixed(3));
+	return total;
+};
+
+const calculateGPA = () => {
+	let gpa = 0;
+	// const cell = $('#GPA');
+	let points = getTotalGradePoints();
+	let courses = getTotalCourses();
+	gpa = points / courses;
+	manipulateFooter(points, courses, gpa);
+	// $(cell).text(gpa.toFixed(3));
+	return gpa;
 };
