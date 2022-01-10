@@ -123,6 +123,10 @@ tfoot {
 	border: 0;
 }
 
+.calculate-btn:hover{
+	cursor: pointer;
+}
+
 .year-active{
 	background-color: #70df8e;
 }
